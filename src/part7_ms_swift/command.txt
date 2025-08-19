@@ -1,0 +1,11 @@
+
+注意:对应的json文件可以替换为当前目录下的swift_yuluo_cog_think.json文件
+
+使用Swift进行训练的命令范例:
+swift sft --model Qwen/Qwen3-0.6B   --train_type lora  --dataset D:\Data\dataset\swift_yuluo_cog_think.json   --torch_dtype bfloat16  --num_train_epochs 3  --per_device_train_batch_size 1 --learning_rate 1e-4  --lora_rank 8 --lora_alpha 32  --target_modules all-linear  --gradient_accumulation_steps 1  --save_steps 26  --logging_steps 1  --max_length 2048 --output_dir output 
+
+
+
+
+使用Swift进行推理的命令:
+swift infer  --model Qwen/Qwen3-0.6B --adapters D:\Project\tmp\swift\output\Qwen3-0.6B\v1-20250819-112538\checkpoint-141  --stream true  --infer_backend pt  --temperature 0  --max_new_tokens 2048
